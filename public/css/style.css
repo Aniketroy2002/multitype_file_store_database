@@ -1,0 +1,268 @@
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #166088;
+    --accent-color: #4fc3f7;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+  }
+  
+  .admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .admin-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .admin-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .admin-header p {
+    color: #666;
+  }
+  
+  .admin-main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .upload-section, .files-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .upload-section h2, .files-section h2 {
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+  }
+  
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .file-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  .file-button {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+  }
+  
+  .file-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .file-name {
+    color: #666;
+  }
+  
+  #file {
+    display: none;
+  }
+  
+  .upload-button {
+    padding: 10px 20px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+  }
+  
+  .upload-button:hover {
+    background-color: #218838;
+  }
+  
+  .no-files {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+  }
+  
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .file-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .file-icon {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    overflow: hidden;
+  }
+  
+  .file-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .pdf-icon, .doc-icon, .xls-icon, .file-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .pdf-icon {
+    background-color: #f44336;
+  }
+  
+  .doc-icon {
+    background-color: #2196f3;
+  }
+  
+  .xls-icon {
+    background-color: #4caf50;
+  }
+  
+  .file-info {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  
+  .file-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .file-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 3px;
+  }
+  
+  .file-actions {
+    display: flex;
+    border-top: 1px solid #eee;
+  }
+  
+  .download-btn, .delete-btn {
+    height: 100%;
+    width: 100%;
+    margin-left: 2px;
+    border-radius: 10px;
+    font-weight: 700;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .download-btn {
+    margin-right: 2px;
+    background-color: var(--accent-color);
+    color: white;
+  }
+  
+  .download-btn:hover {
+    background-color: #03a9f4;
+  }
+  
+  .delete-btn {
+    margin-left: 2px;
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .delete-form {
+    flex: 1;
+  } 
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .files-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-container {
+      padding: 10px;
+    }
+    
+    .files-grid {
+      grid-template-columns: 1fr;
+    }
+  }

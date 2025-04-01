@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aniket's Database</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header">
+      <h1>Aniket's Database</h1>
+      <p>Manage your image,video,files and content. Access it anytime, anywhere.</p>
+    </header>
+
+    <main class="admin-main">
+      <section class="upload-section">
+        <h2>Upload New File</h2>
+        <form action="/files/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+          <div class="form-group">
+            <label for="file" class="file-label">
+              <span class="file-button">Choose File</span>
+              <span class="file-name">No file selected</span>
+              <input type="file" name="file" id="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx">
+            </label>
+          </div>
+          <button type="submit" class="upload-button">Upload File</button>
+        </form>
+      </section>
+
+      <section class="files-section">
+        <h2>Uploaded Files</h2>
+        <% if (files.length === 0) { %>
+          <p class="no-files">No files uploaded yet.</p>
+        <% } else { %>
+          <div class="files-grid">
+            <% files.forEach(file => { %>
+              <div class="file-card">
+                <div class="file-icon">
+                  <% if (file.mimetype.startsWith('image/')) { %>
+                    <img src="/uploads/<%= file.filename %>" alt="<%= file.originalname %>">
+                  <% } else if (file.mimetype === 'application/pdf') { %>
+                    <div class="pdf-icon">PDF</div>
+                  <% } else if (file.mimetype.includes('word') || file.mimetype.includes('document')) { %>
+                    <div class="doc-icon">DOCS</div>
+                  <% } else if (file.mimetype.includes('excel') || file.mimetype.includes('spreadsheet')) { %>
+                    <div class="xls-icon">XLSX</div>
+                  <% } else { %>
+                    <div class="file-icon">FILE</div>
+                  <% } %>
+                </div>
+                <div class="file-info">
+                  <h3><%= file.originalname %></h3>
+                  <p><%= (file.size / 1024).toFixed(2) %> KB</p>
+                  <p><%= file.uploadDate.toLocaleDateString() %></p>
+                </div>
+                <div class="file-actions">
+                  <a href="/uploads/<%= file.filename %>" download class="download-btn">Download</a>
+                  <form action="/files/delete/<%= file._id %>" method="POST" class="delete-form">
+                    <button type="submit" class="delete-btn">Delete</button>
+                  </form>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        <% } %>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
