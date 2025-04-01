@@ -11,7 +11,7 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-mongoose.connect('Mongodb_Url', {
+mongoose.connect('mongodb+srv://aniketroy:file_store@cluster0.c6d5w9o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000 
